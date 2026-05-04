@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+
+            /* 🔥 NEW MODERN BACKGROUND */
+            background: linear-gradient(135deg, #0f2027, #2c5364, #00c9ff);
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 25px;
+            color: #ffffff;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        /* CONTAINER */
+        .container {
+            display: flex;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .left {
+            width: 30%;
+            text-align: center;
+        }
+
+        .right {
+            width: 70%;
+        }
+
+        /* 🔥 PROFILE IMAGE WITH GLOW */
+        .profile-container {
+            width: 180px;
+            height: 220px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 20px;
+
+            border: 3px solid rgba(255,255,255,0.6);
+            box-shadow: 0px 0px 15px rgba(255,255,255,0.5),
+                        0px 0px 25px rgba(0, 201, 255, 0.6);
+        }
+
+        .profile {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* INPUT GRID */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        /* 🔥 IMPROVED INPUT COLORS */
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+        }
+
+        input:nth-child(1) { background: #ff9a9e; }
+        input:nth-child(2) { background: #a1ffce; }
+        input:nth-child(3) { background: #a18cd1; }
+        input:nth-child(4) { background: #fbc2eb; }
+        input:nth-child(5) { background: #fad0c4; }
+        input:nth-child(6) { background: #89f7fe; }
+        input:nth-child(7) { background: #fddb92; }
+        input:nth-child(8) { background: #cfd9df; }
+        input:nth-child(9) { background: #f6d365; }
+        input:nth-child(10){ background: #fda085; }
+        input:nth-child(11){ background: #84fab0; }
+        input:nth-child(12){ background: #cfd9ff; }
+        input:nth-child(13){ background: #d4fc79; }
+        input:nth-child(14){ background: #fccb90; }
+
+        /* BUTTON */
+        .btn {
+            background: linear-gradient(90deg, #00c9ff, #92fe9d);
+            color: black;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* PREDICTION */
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6fff2;
+            border-left: 5px solid green;
+            border-radius: 8px;
+            font-size: 20px;
+            color: green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="{{ url_for('static', filename='vihara_logo.jpg') }}" class="logo">
+        <h1>🏢 Skill Union Pvt. Ltd</h1>
+        <p>✨ House Price Prediction using Machine Learning</p>
+    </div>
+
+    <div class="container">
+
+        <!-- LEFT -->
+        <div class="card left">
+
+            <div class="profile-container">
+                <img src="{{ url_for('static', filename='prajwal.jpeg') }}" class="profile">
+            </div>
+
+            <h2>Prajwal Wankhede</h2>
+            <p><b>Data Analyst & ML Engineer</b></p>
+            <p>Email: prajwalwankhede011.com</p>
+            <p>Phone: 8888317087</p>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="card right">
+
+            <h2>🏠 Enter House Details</h2>
+
+            <form action="/predict" method="post">
+
+                <div class="form-grid">
+                    <input type="text" name="bedrooms" placeholder="Bedrooms">
+                    <input type="text" name="bathrooms" placeholder="Bathrooms">
+                    <input type="text" name="sqft_living" placeholder="Sqft Living">
+                    <input type="text" name="sqft_lot" placeholder="Sqft Lot">
+                    <input type="text" name="floors" placeholder="Floors">
+                    <input type="text" name="waterfront" placeholder="Waterfront">
+                    <input type="text" name="view" placeholder="View">
+                    <input type="text" name="condition" placeholder="Condition">
+                    <input type="text" name="sqft_above" placeholder="Sqft Above">
+                    <input type="text" name="sqft_basement" placeholder="Sqft Basement">
+                    <input type="text" name="yr_built" placeholder="Year Built">
+                    <input type="text" name="yr_renovated" placeholder="Year Renovated">
+                    <input type="text" name="city" placeholder="City (0-43)">
+                    <input type="text" name="country" placeholder="Country (0)">
+                </div>
+
+                <button class="btn">Predict Price</button>
+
+            </form>
+
+            {% if prediction_text %}
+            <div class="prediction">
+                {{ prediction_text }}
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
