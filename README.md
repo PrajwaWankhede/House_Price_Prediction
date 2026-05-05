@@ -1,5 +1,4 @@
-# House_Price_Prediction
-🏠 Housing Price Prediction System
+# Housing Price Prediction System
 📖 Overview
 This project is an end-to-end Machine Learning web application that predicts housing prices based on property features. It demonstrates the complete ML workflow — from data preprocessing and model building to deployment using a Flask web interface.
 The application allows users to input property details and receive real-time price predictions.
